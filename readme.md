@@ -3,6 +3,7 @@
 ## Run application and test in docker
 
 ```sh
+npm install
 docker-compose up -d
 ```
 

@@ -1,11 +1,14 @@
 FROM node:16
+
 WORKDIR /app
-RUN npm install pushstate-server -g
 
-COPY package*.json /app/
+RUN npm install -g pushstate-server
 
-RUN npm ci
-COPY . /app
+COPY package*.json ./
+RUN npm ci --legacy-peer-deps
+
+COPY . .
 
 RUN npm run build
-CMD pushstate-server -d ./dist -p 80
+
+CMD ["pushstate-server", "-d", "./dist", "-p", "80"]
