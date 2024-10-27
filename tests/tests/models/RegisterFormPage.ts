@@ -49,8 +49,8 @@ export class RegisterFormPage {
     this.submitButton = page.locator('button[type="submit"]');
   }
 
-  async goto(url: string = 'http://app'): Promise<void> {
-    await this.page.goto("http://webapp",{ waitUntil: 'domcontentloaded'});
+  async goto(url: string = 'http://webapp'): Promise<void> {
+    await this.page.goto(url,{ waitUntil: 'domcontentloaded'});
   }
 
   async fillFirstName(firstName: string): Promise<void> {

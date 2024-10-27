@@ -29,7 +29,7 @@ services:
 
   test:
     build:
-      context: tests/
+      context: tests
       dockerfile: Dockerfile
     container_name: task
     working_dir: /app
@@ -43,6 +43,8 @@ services:
       - .:/app
       - test-report:/report
       - /app/node_modules
+    command: [ "/bin/sh", "-c", "npm test --prefix ./tests; status=$?; cp -r tests/playwright-report/* /report; exit $status" ]
+
 
 volumes:
   test-report:
